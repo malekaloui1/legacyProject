@@ -1,4 +1,4 @@
-const {Product,sequelize} = require("../../database-mysql/index.js");
+const {Product,sequelize} = require("../database-mysql/index.js");
 module.exports. getAllProduct = (req, res) => {
  Product.findAll()
  .then((result)=>{
