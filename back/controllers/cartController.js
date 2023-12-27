@@ -1,4 +1,4 @@
-const {Product , Cart } = require("../../database-mysql/index.js");
+const {Product , Cart } = require("../database-mysql/index.js");
  
 
 module.exports.getProductsOfUserInCart = (req,res) => {

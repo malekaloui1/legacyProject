@@ -1,4 +1,4 @@
-const {User,Product } = require("../../database-mysql/index");
+const {User,Product } = require("../database-mysql/index");
 const bcrypt = require('bcrypt');
  
 const getAll = (req, res) => {

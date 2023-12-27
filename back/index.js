@@ -1,5 +1,4 @@
 const express = require('express');
-const passport = require('passport');
 const cors = require('cors');
 const translateRouteAdmin = require("./routes/routesAdmin/translate.route.admin");
 const WishListRoute= require("./routes/wishListRoute");

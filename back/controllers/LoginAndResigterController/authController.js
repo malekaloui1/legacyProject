@@ -1,4 +1,4 @@
-const { User } = require("../../../database-mysql/index");
+const { User } = require("../../database-mysql/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 

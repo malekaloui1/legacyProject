@@ -1,4 +1,4 @@
-const { Product, WishList } = require("../../database-mysql/index.js");
+const { Product, WishList } = require("../database-mysql/index.js");
 
 module.exports.getProductsOfUserInWishList = (req, res) => {
   WishList.findAll({ where: { userId: req.params.id } })
