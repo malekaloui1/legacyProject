@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image'
+import ClientHome from './client/page'
 import SellerNavbar from './SellerNavbar/page'
 import Dashboard from './adminDashboard/page'
 import Register from './register/page'
@@ -14,8 +15,10 @@ const  Home=()=> {
   return (
     <div>
     <SellerNavbar/>  
+    <ClientHome/>
     <Register/>
        <Dashboard/>
+    
     </div>
  
   )
