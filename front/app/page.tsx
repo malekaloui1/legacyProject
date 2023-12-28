@@ -1,9 +1,12 @@
 import Image from 'next/image'
+import Dashboard from './adminDashboard/page'
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello world!</h1>
+      <h1>
+        <Dashboard/>
+      </h1>
     </div>
  
   )
