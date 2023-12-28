@@ -5,7 +5,7 @@ translateRoute.post("/add", controllers.AddUser);
 translateRoute.post("/register", controllers.registerUser);
 translateRoute.get("/get", controllers.GetUsers);
 translateRoute.post("/login", controllers.loginUser);
-translateRoute.get("/getUser", mid.verifyToken);
+translateRoute.get("/getUser", mid.verifyToken,controllers.getUser);
 
 
 

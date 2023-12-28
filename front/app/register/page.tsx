@@ -16,9 +16,12 @@ const add=()=>{
   return (
     <div>
        <Link href={'/login'}><h1 className=' underline '>login</h1></Link> 
-       <input placeholder='Username' required type="text" />
-       <input placeholder='Email' required type="email" />
-       <input placeholder='Password' required type="password" />
+       <input placeholder='Username' required type="text"
+       onChange={(e)=>setName(e.target.value)} />
+       <input placeholder='Email' required type="email"
+       onChange={(e)=>setEmail(e.target.value)} />
+       <input placeholder='Password' required type="password"
+       onChange={(e)=>setPass(e.target.value)} />
        <select onChange={(e)=>setRole(e.target.value) }>
         <option >seller</option>
         <option>client</option>
