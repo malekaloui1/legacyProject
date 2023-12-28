@@ -1,9 +1,10 @@
 import Image from 'next/image'
+import ClientHome from './client/page'
 
 export default function Home() {
   return (
     <div>
-      <h1 className=' underline '>Hello world!</h1>
+      <ClientHome/>
     </div>
  
   )
