@@ -1,10 +1,20 @@
+"use client"
 import Image from 'next/image'
+import Register from './register/page'
+import Login from './login/page'
+import axios from 'axios'
+import Page from './home/page'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+const  Home=()=> {
 
-export default function Home() {
+
   return (
     <div>
-      <h1>Hello world!</h1>
+    
+     <Register/>
     </div>
  
   )
 }
+export default Home
