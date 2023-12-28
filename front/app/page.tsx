@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image'
+import SellerNavbar from './SellerNavbar/page'
 import Dashboard from './adminDashboard/page'
 import Register from './register/page'
 import Login from './login/page'
@@ -12,7 +13,8 @@ const  Home=()=> {
 
   return (
     <div>
-       <Register/>
+    <SellerNavbar/>  
+    <Register/>
        <Dashboard/>
     </div>
  
