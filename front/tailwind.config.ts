@@ -8,8 +8,12 @@ const config: Config = {
   ],
   theme: {
     colors:{
+      'border-color ':'#e5e7eb',
       'gray':'#e5e7eb',
       'white':'#ffffff',
+      'black':'#000000',
+      'blue':'#5995cc',
+      'gray-400':'#94a3b8'
       
     },
     extend: {

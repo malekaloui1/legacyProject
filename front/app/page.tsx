@@ -13,9 +13,9 @@ const  Home=()=> {
 
   return (
     <div>
-     <SellerNavbar/> 
+     {/* <SellerNavbar/>  */}
      <Register/>
-     <ClientHome/>
+     {/* <ClientHome/> */}
     </div>
  
   )
