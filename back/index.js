@@ -8,7 +8,7 @@ const translateRouteAuth = require("./routes/LoginAndResigter.routes/authRouters
 const SellerRoute = require("./routes/SellerRoute.js");
 
 
-
+const translateRoute=require('./routes/LoginAndResigter.routes/authRouters.js')
 
 const app = express();
 
@@ -29,7 +29,7 @@ app.use("/admin", translateRouteAdmin);
 app.use("/client", ClientRoute);
 app.use("/seller", SellerRoute);
 app.use("/wishList", WishListRoute);
-
+app.use('/api',translateRoute)
 
 
 app.listen(PORT, () => {
