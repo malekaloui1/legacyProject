@@ -41,17 +41,20 @@ const Login= () => {
     'background-image': 'linear-gradient(-45deg,#ce7615, #fcc32c)'}}>Login</h1></Link>
               </div>
             </div>
+            <div className='ml-40 mt-10'>
           <input type="email"
           placeholder='Email'
           onChange={(e)=>setEmail(e.target.value)}
           />
+          <br/>
           <input type="password"
           placeholder='Password'
           onChange={(e)=>setPass(e.target.value)}
-          />
+          /><br/>
        <button onClick={()=>login()} >log-in </button>
 
         <Link href={'/register'}><button >register</button></Link>
+        </div>
         </div>
         <div>
         {/* <div className='bg-gray w-64 h-64 rounded-full absolute'></div> */}
