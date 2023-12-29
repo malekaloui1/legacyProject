@@ -1,14 +1,13 @@
 "use client"
 
-import axios from "axios";
-import { useState, useEffect } from "react";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import SellerNavbar from '../../SellerNavbar/page';
-import "./SellerOneProduct.css";
-import UpdateProduct from "../../UpdateProduct/page";
-
+import UpdateProduct from '../../UpdateProduct/page';
+import "./SellerOneProduct.css"
 
 interface Product {
-  id: string;
+  id: number;
   name: string;
   images: string;
   price: number;
@@ -16,32 +15,33 @@ interface Product {
   unit: string;
 }
 
-interface SellerOneProductProps {
-  refresh: boolean;
-  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh }) => {
+
+const SellerOneProduct = () => {
   const [oneProduct, setOneProduct] = useState<Product>({});
-  const [show, setShow] = useState(false);
-    
+  const [show, setShow] = useState<boolean>(false);
+ 
+
   useEffect(() => {
-    axios.get<Product>(`http://localhost:3000/seller/getOne/1`).then((res) => {
-      setOneProduct(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      axios
+        .get<Product>(`http://localhost:3000/seller/getOne/`)
+        .then((res) => {
+          setOneProduct(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   }, []);
 
   const remove = (productId: string): void => {
-    axios.delete(`http://localhost:3000/seller/removeProduct/1`).then(() => {
-      setRefresh(!refresh);
-      
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    axios
+      .delete(`http://localhost:3000/seller/removeProduct/`)
+      .then(() => {
+       
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -51,9 +51,9 @@ const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh
         <img className="" src={oneProduct.images} alt="" />
         <h4>{oneProduct.name}</h4>
         <div>
-          <div>Price:{oneProduct.price}</div>
-          <div>Description:{oneProduct.description}</div>
-          <div>Unit:{oneProduct.unit}</div>
+          <div>Price: {oneProduct.price}</div>
+          <div>Description: {oneProduct.description}</div>
+          <div>Unit: {oneProduct.unit}</div>
         </div>
         <button
           className="delete-button"
@@ -71,9 +71,7 @@ const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh
         >
           Edit
         </button>
-        {show&&
-      <UpdateProduct oneProduct={oneProduct}/>
-        }
+        {show && <UpdateProduct oneProduct={oneProduct} />}
       </div>
     </div>
   );

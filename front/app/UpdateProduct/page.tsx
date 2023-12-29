@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import "../UpdateProduct/updateProduct.css";
+import "./updateProduct.css";
 import axios from "axios";
 
 interface UpdateProductProps {
