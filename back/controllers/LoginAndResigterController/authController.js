@@ -1,4 +1,4 @@
-const { User } = require("../../../database-mysql/index");
+const { User } = require("../../database-mysql/index");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -28,6 +28,10 @@ const GetUsers = function (req, res) {
       res.status(500).send(error);
     });
 };
+const getUser=async function (req,res){
+ let d=await User.findOne({where:{id:req.id}})
+ res.json(d)
+}
 
 const generateToken = (id, firstName) => {
   const expiresIn = 60 * 60 * 24;
@@ -75,7 +79,7 @@ const loginUser = function (req, res) {
           user.firstName + " " + user.lastName
         );
  
-        res.json({ token, id: user.id , email:user.email ,password:user.password ,firstName:user.firstName,lastName:user.lastName,adress:user.adress });
+        res.json({ token, id: user.id  });
       } else {
         res.status(401).json({ message: "Invalid credentials" });
       }
@@ -84,4 +88,4 @@ const loginUser = function (req, res) {
     .catch((err) => res.status(500).send(err));
 };
 
-module.exports = { AddUser, GetUsers, loginUser, registerUser };
+module.exports = { AddUser, GetUsers, loginUser, registerUser,getUser };

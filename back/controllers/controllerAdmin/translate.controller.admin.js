@@ -1,5 +1,5 @@
 // require your Model phrase here
-const {User,Product} = require("../../../database-mysql/index");
+const {User,Product} = require("../../database-mysql/index");
 
 
 module.exports.getAllClients=(async(req,res)=>{
