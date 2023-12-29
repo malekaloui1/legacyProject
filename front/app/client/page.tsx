@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './navbar/page'
 import Footer from'./component/footer'
 import Image from 'next/image'
+import Link from 'next/link'
 import axios from 'axios'
 
 interface ProductProps{
@@ -12,33 +13,48 @@ interface ProductProps{
     images: string
 }
 
-const ClientHome = async(props:ProductProps) => {
 
-    const res= await fetch("http://localhost:3000/client/getAllProduct")
-    const products: ProductProps[] = await res.json()
+const ClientHome = async({searchParams}: {searchParams: { [key: string]: string | string[] |undefined }}) => {
+let products: ProductProps[]=[];
+  const search = typeof searchParams.search === 'string' ? searchParams.search : undefined
+  console.log("search",search);
   
+  async function fetchProducts(search?: string): Promise<ProductProps[]> {
+    try {
+        let res;
+        let products: ProductProps[];
+
+        if (search) {
+            res = await axios.get(`http://localhost:3000/client/searchProductByName/${search}`);
+        } else {
+            res = await axios.get("http://localhost:3000/client/getAllProduct");
+        }
+
+        products = res.data;
+
+        return products;
+    } catch (error) {
+        throw new Error("Failed to fetch products.");
+    }
+}
 
   return (
     <div className='flex flex-col min-h-screen'>
     <Navbar/>
-    <div className=''>
-{/* <Image
-src="https://i.pinimg.com/564x/0b/bd/0f/0bbd0f185a0f564d80d17ea11147fe36.jpg"
-alt=''
-/> */}
-</div>
 <main>
 <div className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
 {products.map(props=>
         <div key={props.id}>
-	{/* <Image fill={true} src="https://source.unsplash.com/random/300x300/?2" alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500"/> */}
 	<div className="flex flex-col justify-between p-6 space-y-8">
 		<div className="space-y-2">
+      <Link href={{pathname:`/client/oneProduct/[productName]`, query:{products:props.name}}}
+      >
 			<h2 className="text-3xl font-semibold tracki">{props.name}</h2>
+      </Link>
 			<p className="dark:text-gray-100">{props.price}</p>
       </div>      
 		</div>
-   <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md dark:bg-violet-400 dark:text-gray-900">Read more</button>
+   <button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracki rounded-md dark:bg-violet-400 dark:text-gray-900">Add To Cart</button>
 	</div>
    )}
 </div>
