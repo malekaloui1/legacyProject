@@ -36,10 +36,14 @@ const add=()=>{
             </div>
             <div className='ml-40 mt-10'>
               <h1 className='text-center mb-5 font-extrabold text-xl'>Welcome</h1>
-              <h1>Register to continue </h1>
+              <h1 className='mb-5'>Register to continue </h1>
 
               <div>
-              <Link href={'/register'}><button className=' text-blue float-right font-bold mr-10 mb-5'>Log-in</button></Link>
+              <Link href={'/login'}><button 
+              style={{'position': 'absolute',
+                'top': '31%',
+                'left': '43%'}}
+              className=' text-blue float-right font-bold mr-10'>Log-in</button></Link>
                 <input placeholder='Username' required type="text"
         onChange={(e)=>setName(e.target.value)} 
         className='w-[30rem] h-14 border border-gray-400 p-4  text-sm	mb-10'
@@ -51,9 +55,13 @@ const add=()=>{
          />
         <input placeholder='Password' required type="password"
         onChange={(e)=>setPass(e.target.value)}
-        className='w-[30rem] h-14 border border-gray-400 p-4  text-sm	'
+        className='w-[30rem] h-14 border border-gray-400 p-4  text-sm mb-5	'
         />
-      <select onChange={(e)=>setRole(e.target.value) }>
+        <br />
+        <h1 >Role:</h1><br />
+      <select onChange={(e)=>setRole(e.target.value) }
+      className='w-[10rem] h-7 cursor-pointer rounded-sm'
+      >
          <option >seller</option>
          <option>client</option>
        </select>

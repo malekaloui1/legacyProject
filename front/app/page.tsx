@@ -1,4 +1,3 @@
-"use client"
 import Image from 'next/image'
 import ClientHome from './client/page'
 import SellerNavbar from './SellerNavbar/page'
@@ -9,16 +8,13 @@ import axios from 'axios'
 import Page from './home/page'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Sales from './home/sales'
 const  Home=()=> {
 
 
   return (
     <div>
-    <SellerNavbar/>  
-    <ClientHome/>
-    <Register/>
-       <Dashboard/>
-    
+<Register/>
     </div>
  
   )

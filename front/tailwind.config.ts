@@ -13,7 +13,10 @@ const config: Config = {
       'white':'#ffffff',
       'black':'#000000',
       'blue':'#5995cc',
-      'gray-400':'#94a3b8'
+      'gray-400':'#94a3b8',
+      'gray-700':'#334155',
+      'orange':'#e83e01',
+      'bg':'#faf5f2'
       
     },
     extend: {
