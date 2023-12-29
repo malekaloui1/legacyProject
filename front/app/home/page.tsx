@@ -20,8 +20,8 @@ const Home = () => {
       <div className='absolute z-10 text-white font-bold flex gap-[4rem] ml-40 m-10'>
         <img className='w-10 rounded-md mr-40' src="https://cdn.shopify.com/s/files/1/0558/6413/1764/files/Orange_Logo_Design_30_1024x1024.png?v=1679565592" alt="" />
         <Link href={'/home'}>Home</Link>
-        <Link href={'/contact'}>Contact Us</Link>
-        <Link href={'/about'}>About Us</Link>
+        <Link href={'/client/navbar/contact'}>Contact Us</Link>
+        <Link href={'/client/about'}>About Us</Link>
         <Link href={'/whish'}>Wishlist</Link>
         <Link href={'/basket'}>Basket</Link>
         <div className='flex gap-4 ml-36'>
