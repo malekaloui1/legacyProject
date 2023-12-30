@@ -1,11 +1,16 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa6";
-
+import axios from 'axios'
 const Sales = () => {
     const[index,setIndex]=useState(-1)
     const[heart,setHeart]=useState(false)
+    const token=localStorage.getItem('token')
+useEffect(()=>{
+    axios.get(`http://localhost:3000/api/getUser`,{headers:{Authorization:`Bearer ${token}`}})
+    .then(r=>{console.log(r.data)}).catch(err=>console.log('np',err))
+  },[])
   return (
     <div className='absolute top-[150%] flex gap-5 ml-[131px]' id="d">
         <div className='w-[18rem] h-[18rem] bg-white flex justify-center items-center rounded-xl'>

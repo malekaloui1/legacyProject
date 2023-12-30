@@ -4,20 +4,20 @@ import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 const Login= () => {
-  const[con,setCon]=useState("")
   const router=useRouter()
   const[email,setEmail]=useState("")
   const[pass,setPass]=useState("")
-  const[userID,setUserID]=useState(0)
-  const[token,setToken]=useState('')
-  const[logged,setLogged]=useState(false)
+
 
   const login=()=>{
     axios.post(`http://localhost:3000/auth/login`,{email:email,password:pass})
     .then(r=>{
-      setToken(r.data.token)
-      setUserID(r.data.id)
-      router.push('/home')
+      localStorage.setItem('token',r.data.token)
+      if(r.data.role==='client'){
+        router.push('/home')}
+      else if(r.data.role==='seller'){
+        router.push('/SellerHome')
+      }      
       
     }).catch(err=>console.log(err))
   }
@@ -82,5 +82,4 @@ const Login= () => {
         </div>
   )
 }
-
 export default Login
