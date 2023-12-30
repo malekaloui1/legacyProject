@@ -8,12 +8,19 @@ const config: Config = {
   ],
   theme: {
     colors:{
+      'border-color ':'#e5e7eb',
       'gray':'#e5e7eb',
       'white':'#ffffff',
-      "blue":'#1e3a8a',
+      "bluer":'#1e3a8a',
       "bluee":'#93c5fd',
       "jaune":'#92400e',
-      "jaunee":'#fef3c7'
+      "jaunee":'#fef3c7',
+      'black':'#000000',
+      'blue':'#5995cc',
+      'gray-400':'#94a3b8',
+      'gray-700':'#334155',
+      'orange':'#e83e01',
+      'bg':'#faf5f2'
       
     },
     extend: {
