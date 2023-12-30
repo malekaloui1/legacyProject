@@ -3,12 +3,13 @@ import React,{useState,createContext} from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import Alert from '@mui/material/Alert';
+
 const Login= () => {
   const router=useRouter()
   const[email,setEmail]=useState("")
   const[pass,setPass]=useState("")
-
-
+const[notFound,setNotFound]=useState(false)
   const login=()=>{
     axios.post(`http://localhost:3000/auth/login`,{email:email,password:pass})
     .then(r=>{
@@ -19,7 +20,7 @@ const Login= () => {
         router.push('/SellerHome')
       }      
       
-    }).catch(err=>console.log(err))
+    }).catch(err=>setNotFound(true))
   }
   
   return (
@@ -79,6 +80,8 @@ const Login= () => {
         {/* <div className='bg-gray w-64 h-64 rounded-full absolute'></div> */}
         <img className='w-full h-full float-right' src="https://static.vecteezy.com/ti/vecteur-libre/p3/2441473-illustration-de-camping-de-nuit-gratuit-vectoriel.jpg" alt="" />
         </div>
+       { notFound&&<Alert severity="error" className='absolute top-[90%] left-[20%]'>User Not Found!</Alert>
+}
         </div>
   )
 }

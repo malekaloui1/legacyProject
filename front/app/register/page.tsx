@@ -2,7 +2,12 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
+import Alert from '@mui/material/Alert';
+import { useRouter } from 'next/navigation';
+
+
 const Register = () => {
+  const router=useRouter()
     const[email,setEmail]=useState(null)
     const[pass,setPass]=useState(null)
     const[name,setName]=useState(null)
@@ -11,7 +16,11 @@ const Register = () => {
 
 const add=()=>{
     axios.post(`http://localhost:3000/auth/register`,{firstName:name,email:email,password:pass,role:role})
-    .then(r=>setLogged(true)).catch(err=>console.log(err))
+    .then(r=>{setLogged(true)
+    setTimeout(() => {
+      router.push('/login')
+    }, 1500);
+    }).catch(err=>console.log(err))
 }
     
   return (
@@ -80,14 +89,12 @@ const add=()=>{
         <h3 className='text-white absolute m-32 text-xl mt-80 font-bold'>Join us and live the adventure!</h3>
         {/* <div className='bg-gray w-64 h-64 rounded-full absolute'></div> */}
         <img className='w-full h-full float-right' src="https://static.vecteezy.com/ti/vecteur-libre/p3/2441473-illustration-de-camping-de-nuit-gratuit-vectoriel.jpg" alt="" />
-        {logged&&<div className='w-full h-full z-10 right-0 absolute bg-black opacity-50'>          </div>
-}
-
+       {logged&& <Alert severity="success" color="info" className='absolute top-[75%] left-[25%]'>
+  User Added Successefully !
+</Alert>}
         </div>
         
-               {/* {logged&& <div id='pop-up'  className='absolute z-20  bg-green-400 w-full h-20 bottom-0 text-white flex justify-center items-center'>
-                  <h1 className='text-[35px] ml-20'>User added Successefully</h1>
-                </div>} */}
+             
         </div>
       
     
