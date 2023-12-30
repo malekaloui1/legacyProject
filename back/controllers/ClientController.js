@@ -10,8 +10,7 @@ module.exports. getAllProduct = (req, res) => {
 };
 
 module.exports.searchProductByName = (req, res) => {
-  const {name} = req.params
-  console.log(req.params.name);
+  const {name} = req.params.name
   Product.findOne({where:{name}})
   .then((result)=>{
      res.status(200).send(result)

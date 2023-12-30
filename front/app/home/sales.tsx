@@ -1,11 +1,22 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa6";
+import axios from 'axios'
+import { useRouter } from 'next/navigation';
+
 
 const Sales = () => {
     const[index,setIndex]=useState(-1)
     const[heart,setHeart]=useState(false)
+    const token=localStorage.getItem('token')
+    const router= useRouter()
+
+useEffect(()=>{
+    axios.get(`http://localhost:3000/api/getUser`,{headers:{Authorization:`Bearer ${token}`}})
+    .then(r=>{console.log(r.data)}).catch(err=>console.log('np',err))
+  },[])
+
   return (
     <div className='absolute top-[150%] flex gap-5 ml-[131px]' id="d">
         <div className='w-[18rem] h-[18rem] bg-white flex justify-center items-center rounded-xl'>
@@ -66,7 +77,7 @@ const Sales = () => {
         <div className='absolute bg-white rounded-xl top-[46%] flex justify-center items-center w-[150px] h-[50px] text-orange'>36$/night</div>
         <h1 className='absolute top-[80%] font-bold text-[20px]'>Dragon Fly Camping</h1>
         </div>
-        <button className='w-[15rem] h-[4rem] rounded-3xl text-white bg-orange absolute top-[140%]'>Explore More </button>
+       <button onClick={()=>router.push("/client")} className='w-[15rem] h-[4rem] rounded-3xl text-white bg-orange absolute top-[140%]'>Explore More </button>
     </div>
   )
 }

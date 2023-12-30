@@ -2,15 +2,25 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
+import Alert from '@mui/material/Alert';
+import { useRouter } from 'next/navigation';
+
+
 const Register = () => {
-    const[email,setEmail]=useState("")
-    const[pass,setPass]=useState("")
-    const[name,setName]=useState("")
+  const router=useRouter()
+    const[email,setEmail]=useState(null)
+    const[pass,setPass]=useState(null)
+    const[name,setName]=useState(null)
     const[role,setRole]=useState("seller")
+    const[logged,setLogged]=useState(false)
 
 const add=()=>{
     axios.post(`http://localhost:3000/auth/register`,{firstName:name,email:email,password:pass,role:role})
-    .then(r=>console.log('added')).catch(err=>console.log(err))
+    .then(r=>{setLogged(true)
+    setTimeout(() => {
+      router.push('/login')
+    }, 1500);
+    }).catch(err=>console.log(err))
 }
     
   return (
@@ -79,7 +89,12 @@ const add=()=>{
         <h3 className='text-white absolute m-32 text-xl mt-80 font-bold'>Join us and live the adventure!</h3>
         {/* <div className='bg-gray w-64 h-64 rounded-full absolute'></div> */}
         <img className='w-full h-full float-right' src="https://static.vecteezy.com/ti/vecteur-libre/p3/2441473-illustration-de-camping-de-nuit-gratuit-vectoriel.jpg" alt="" />
+       {logged&& <Alert severity="success" color="info" className='absolute top-[75%] left-[25%]'>
+  User Added Successefully !
+</Alert>}
         </div>
+        
+             
         </div>
       
     

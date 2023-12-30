@@ -1,14 +1,12 @@
 "use client"
-
-import axios from "axios";
-import { useState, useEffect } from "react";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import SellerNavbar from '../../SellerNavbar/page';
+import UpdateProduct from '../../UpdateProduct/page';
 import "./SellerOneProduct.css";
-import UpdateProduct from "../../UpdateProduct/page";
-
 
 interface Product {
-  id: string;
+  id: number;
   name: string;
   images: string;
   price: number;
@@ -16,32 +14,51 @@ interface Product {
   unit: string;
 }
 
-interface SellerOneProductProps {
-  refresh: boolean;
-  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
-}
+const SellerOneProduct: React.FC = () => {
+  const [oneProduct, setOneProduct] = useState<Product>({ id: 0, name: '', images: '', price: 0, description: '', unit: '' });
+  const [show, setShow] = useState<boolean>(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState<boolean>(false);
 
-const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh }) => {
-  const [oneProduct, setOneProduct] = useState<Product>({});
-  const [show, setShow] = useState(false);
-    
   useEffect(() => {
-    axios.get<Product>(`http://localhost:3000/seller/getOne/1`).then((res) => {
-      setOneProduct(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }, []);
+    var currentUrl = window.location.href;
+    axios
+      .get<Product>(`http://localhost:3000/seller/getOne/${currentUrl[currentUrl.length - 1]}`)
+      .then((res) => {
+        setOneProduct(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [window.location.href]);
 
-  const remove = (productId: string): void => {
-    axios.delete(`http://localhost:3000/seller/removeProduct/1`).then(() => {
-      setRefresh(!refresh);
-      
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const showDeleteConfirmation = () => {
+    setShowConfirmationModal(true);
+  };
+
+  const hideDeleteConfirmation = () => {
+    setShowConfirmationModal(false);
+  };
+
+  const remove = (): void => {
+    showDeleteConfirmation();
+  };
+
+  const confirmDelete = () => {
+    var currentUrl = window.location.href;
+    axios
+      .delete(`http://localhost:3000/seller/removeProduct/${currentUrl[currentUrl.length - 1]}`)
+      .then(() => {
+        // Handle successful deletion
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    hideDeleteConfirmation();
+  };
+
+  const cancelDelete = () => {
+    hideDeleteConfirmation();
   };
 
   return (
@@ -51,15 +68,13 @@ const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh
         <img className="" src={oneProduct.images} alt="" />
         <h4>{oneProduct.name}</h4>
         <div>
-          <div>Price:{oneProduct.price}</div>
-          <div>Description:{oneProduct.description}</div>
-          <div>Unit:{oneProduct.unit}</div>
+          <div>Price: {oneProduct.price}</div>
+          <div>Description: {oneProduct.description}</div>
+          <div>Unit: {oneProduct.unit}</div>
         </div>
         <button
           className="delete-button"
-          onClick={() => {
-            remove(oneProduct.id);
-          }}
+          onClick={remove}
         >
           Delete
         </button>
@@ -71,9 +86,18 @@ const SellerOneProduct: React.FC<SellerOneProductProps> = ({ refresh, setRefresh
         >
           Edit
         </button>
-        {show&&
-      <UpdateProduct oneProduct={oneProduct}/>
-        }
+        {show && <UpdateProduct oneProduct={oneProduct} />}
+
+        {/* Confirmation Modal */}
+        {showConfirmationModal && (
+          <div className="confirmation-modal">
+            <div className="confirmation-content">
+              <p>Are you sure you want to delete this product?</p>
+              <button onClick={confirmDelete}>Confirm</button>
+              <button onClick={cancelDelete}>Cancel</button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

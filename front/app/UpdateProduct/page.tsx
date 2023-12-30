@@ -1,5 +1,6 @@
+"use client"
 import React, { useState, ChangeEvent } from "react";
-import "../UpdateProduct/updateProduct.css";
+import "./updateProduct.css";
 import axios from "axios";
 
 interface UpdateProductProps {
@@ -13,6 +14,7 @@ const UpdateProduct: React.FC<UpdateProductProps> = ({ oneProduct }) => {
   const [unit, setUnit] = useState<number>(0);
   const [category, setCategory] = useState<string>("Tent");
   const [refresh, setRefresh] = useState<boolean>(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState<boolean>(false);
 
   const obj = {
     name: name,
@@ -22,17 +24,33 @@ const UpdateProduct: React.FC<UpdateProductProps> = ({ oneProduct }) => {
     category: category,
   };
 
-  const modify = (id: number) => {
-    console.log(obj);
+  const modify = () => {
+    showUpdateConfirmation();
+  };
+
+  const confirmUpdate = () => {
     axios
-      .put(`http://localhost:3000/seller/updateProduct/${id}`, obj)
+      .put(`http://localhost:3000/seller/updateProduct/${oneProduct.id}`, obj)
       .then(() => {
         alert("Product Modified");
         setRefresh(!refresh);
+        hideUpdateConfirmation();
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const cancelUpdate = () => {
+    hideUpdateConfirmation();
+  };
+
+  const showUpdateConfirmation = () => {
+    setShowConfirmationModal(true);
+  };
+
+  const hideUpdateConfirmation = () => {
+    setShowConfirmationModal(false);
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -97,10 +115,21 @@ const UpdateProduct: React.FC<UpdateProductProps> = ({ oneProduct }) => {
             <option value="Lantern">Lantern</option>
           </select>
         </div>
-        <button type="button" onClick={() => modify(oneProduct.id)}>
+        <button type="button" onClick={modify}>
           Update Product
         </button>
       </form>
+
+      {/* Confirmation Modal */}
+      {showConfirmationModal && (
+        <div className="confirmation-modal">
+          <div className="confirmation-content">
+            <p>Are you sure you want to update this product?</p>
+            <button onClick={confirmUpdate}>Confirm</button>
+            <button onClick={cancelUpdate}>Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

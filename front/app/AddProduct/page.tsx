@@ -10,7 +10,7 @@ interface Product {
   description: string;
   unit: number;
   category: string;
-  images: string[];
+  images: string;
 }
 
 const CreateProduct: React.FC = () => {
