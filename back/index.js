@@ -2,11 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const translateRouteAdmin = require("./routes/routesAdmin/translate.route.admin");
 const WishListRoute= require("./routes/wishListRoute");
-const translateRouteClient1 = require("./routes/Client1");
+const ClientRoute =require ("./routes/ClientRoute.js")
 const cartRoute = require("./routes/CartRoute");
 const translateRouteAuth = require("./routes/LoginAndResigter.routes/authRouters.js");
 const SellerRoute = require("./routes/SellerRoute.js");
-const routerClients = require("./routes/routerclients2/router");
+
 
 const translateRoute=require('./routes/LoginAndResigter.routes/authRouters.js')
 
@@ -22,11 +22,11 @@ const PORT = 3000;
 
 app.use(cors());
 app.use("/cart", cartRoute);
-app.use("/client1", translateRouteClient1);
+
 app.use("/auth", translateRouteAuth);
 app.use("/admin", translateRouteAdmin);
 
-app.use("/clients", routerClients);
+app.use("/client", ClientRoute);
 app.use("/seller", SellerRoute);
 app.use("/wishList", WishListRoute);
 app.use('/api',translateRoute)
