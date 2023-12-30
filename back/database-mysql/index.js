@@ -56,6 +56,28 @@ const User= connection.define("users",{
   }
 
 })
+const Contact= connection.define("contacts",{
+  id:{
+    type:DataTypes.INTEGER,
+    autoIncrement:true,
+    primaryKey:true
+  },
+  firstName : {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+    
+  email : {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  message : {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  }
+
+})
+
 
 const Product=connection.define("products",{
   name : {
