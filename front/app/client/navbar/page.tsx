@@ -23,7 +23,9 @@ const navbar = () => {
     <li className="font-semibold text-gray-700"><Link href={"/client/profile"}>
      Profile
     </Link></li>
-      <li className="font-semibold text-gray-700"><Link href={"/"} >
+      <li className="font-semibold text-gray-700"><Link
+      onClick={()=>localStorage.clear()}
+      href={"/"} >
      Sign Out
     </Link></li>
     </ul>
