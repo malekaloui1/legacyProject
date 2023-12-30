@@ -79,7 +79,7 @@ const loginUser = function (req, res) {
           user.firstName + " " + user.lastName
         );
  
-        res.json({ token, id: user.id  });
+        res.json({ token, id: user.id,role:user.role  });
       } else {
         res.status(401).json({ message: "Invalid credentials" });
       }

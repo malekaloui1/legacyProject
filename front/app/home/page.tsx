@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Sales from './sales'
 import Footer from './footer'
 const Home = () => {
-// if(token){
-// useEffect(()=>{
-//     axios.get(`http://localhost:3000/api/getUser`,{headers:{Authorization:`Bearer ${token}`}})
-//     .then(r=>{setData(r.data)
-//   localStorage.setItem("user",JSON.stringify(r.data))}).catch(err=>console.log('np',err))
-//   },[])
-// }
 
-  
+
   return (
     <div>
       <div>
       <div className='absolute z-10 text-white font-bold flex gap-[4rem] ml-40 m-10'>
         <img className='w-10 rounded-md mr-40' src="https://cdn.shopify.com/s/files/1/0558/6413/1764/files/Orange_Logo_Design_30_1024x1024.png?v=1679565592" alt="" />
         <Link href={'/home'}>Home</Link>
-        <Link href={'/contact'}>Contact Us</Link>
-        <Link href={'/about'}>About Us</Link>
+        <Link href={'/client/navbar/contact'}>Contact Us</Link>
+        <Link href={'/client/about'}>About Us</Link>
         <Link href={'/whish'}>Wishlist</Link>
         <Link href={'/basket'}>Basket</Link>
         <div className='flex gap-4 ml-36'>
@@ -33,7 +26,7 @@ const Home = () => {
       <div className=' absolute text-white z-10 '>
       <h1 className=' mt-[10rem] ml-[130%] text-[60px] font-extrabold text-nowrap'>Find Yourself<br/> Outside.</h1>
       <h1 className='mt-7 ml-[133%] text-nowrap'>Book unique camping on over 300.000 campsites,<h1 className='ml-4'>cabins,RV parks,public parks and more.</h1><br/></h1>
-      <button className='w-[10rem] h-9 ml-[160%] bg-orange rounded-[50px]'><a href='Sales'> Discover</a></button>
+      <button className='w-[10rem] h-9 ml-[160%] bg-orange rounded-[50px]'><a href='#d'> Discover</a></button>
       </div>
       <div className='absolute z-20 flex top-[33rem] gap-5 ml-[131px] ' >
         <div className='w-[18rem] h-[18rem] bg-white flex justify-center items-center rounded-xl mb-40'>

@@ -9,12 +9,17 @@ import Page from './home/page'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Sales from './home/sales'
+import { createContext } from 'vm'
 const  Home=()=> {
 
 
   return (
     <div>
-<Register/>
+    <Register/>  
+    {/* <ClientHome/>
+    <Register/>
+       <Dashboard/> */}
+    
     </div>
  
   )

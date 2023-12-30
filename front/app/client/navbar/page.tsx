@@ -14,7 +14,7 @@ const navbar = () => {
       <Searchbar/>
     </div>
     <ul className="flex items-center space-x-10">
-      <li className="font-semibold text-gray-700"><Link href={"/client/contact"}>
+      <li className="font-semibold text-gray-700"><Link href={"/client/navbar/contact"}>
      Contact
     </Link></li>
       <li className="font-semibold text-gray-700"><Link href={"/client/about"}>
@@ -23,7 +23,7 @@ const navbar = () => {
     <li className="font-semibold text-gray-700"><Link href={"/client/profile"}>
      Profile
     </Link></li>
-      <li className="font-semibold text-gray-700"><Link href={"/"}>
+      <li className="font-semibold text-gray-700"><Link href={"/"} >
      Sign Out
     </Link></li>
     </ul>
