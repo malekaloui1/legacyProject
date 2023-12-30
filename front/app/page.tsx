@@ -15,7 +15,11 @@ const  Home=()=> {
 
   return (
     <div>
-<Register />
+    <Register/>  
+    {/* <ClientHome/>
+    <Register/>
+       <Dashboard/> */}
+    
     </div>
  
   )
