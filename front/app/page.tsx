@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import ClientHome from './client/page'
 import SellerNavbar from './SellerNavbar/page'
+import Dashboard from './adminDashboard/page'
 import Register from './register/page'
 import Login from './login/page'
 import axios from 'axios'
@@ -13,9 +14,11 @@ const  Home=()=> {
 
   return (
     <div>
-     <SellerNavbar/> 
-     {/* <Register/>
-     <ClientHome/> */}
+    <SellerNavbar/>  
+    <ClientHome/>
+    <Register/>
+       <Dashboard/>
+    
     </div>
  
   )
