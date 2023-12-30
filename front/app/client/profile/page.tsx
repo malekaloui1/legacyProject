@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Navbar from '../navbar/page'
+import NavbarOther from '../navbar/navbar'
 import Footer from '../component/footer'
 import  { useState , useEffect} from "react"; 
 import Cookies from 'js-cookie';
@@ -66,7 +66,7 @@ useEffect(() => {
 
   return (
     <div>
-        <Navbar/>
+        <NavbarOther/>
     <div className="bg-white w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row text-[#161931]">
     <aside className="hidden py-4 md:w-1/3 lg:w-1/4 md:block">
         <div className="sticky flex flex-col gap-2 p-4 text-sm border-r border-indigo-100 top-12">

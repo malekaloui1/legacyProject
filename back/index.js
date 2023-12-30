@@ -6,7 +6,7 @@ const ClientRoute =require ("./routes/ClientRoute.js")
 const cartRoute = require("./routes/CartRoute");
 const translateRouteAuth = require("./routes/LoginAndResigter.routes/authRouters.js");
 const SellerRoute = require("./routes/SellerRoute.js");
-
+const conRoutes=require('./routes/contact/contact.js')
 
 const translateRoute=require('./routes/LoginAndResigter.routes/authRouters.js')
 
@@ -30,8 +30,8 @@ app.use("/client", ClientRoute);
 app.use("/seller", SellerRoute);
 app.use("/wishList", WishListRoute);
 app.use('/api',translateRoute)
-
-
+app.use('/contact',conRoutes)
+app.use('/admin',translateRoute)
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

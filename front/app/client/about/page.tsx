@@ -1,12 +1,13 @@
 import React from 'react'
-import Navbar from '../navbar/page';
+import NavbarOther from '../navbar/navbar';
 import Footer from '../component/footer';
+
 
 const About = () => {
 
   return ( 
   <div>
-      <Navbar/>
+      <NavbarOther/>
 
     <div className='my-20'>
     <div>

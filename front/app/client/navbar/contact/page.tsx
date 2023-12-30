@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../../navbar/page'
+import NavbarOther from '../navbar'
 import Footer from '../../component/footer'
 
 function contact() {
   return (
 	<div>
-		<Navbar/>
+		<NavbarOther/>
     <section className="py-6 dark:bg-gray-800 dark:text-gray-50 my-20">
 	<div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
 		<div className="py-6 md:py-0 md:px-6">
