@@ -7,6 +7,7 @@ const Sales = () => {
     const[index,setIndex]=useState(-1)
     const[heart,setHeart]=useState(false)
     const token=localStorage.getItem('token')
+    console.log(token)
 useEffect(()=>{
     axios.get(`http://localhost:3000/api/getUser`,{headers:{Authorization:`Bearer ${token}`}})
     .then(r=>{console.log(r.data)}).catch(err=>console.log('np',err))
