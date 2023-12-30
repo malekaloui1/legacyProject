@@ -15,9 +15,9 @@ const  Home=()=> {
   return (
     <div>
     <SellerNavbar/>  
-    <ClientHome/>
+    {/* <ClientHome/>
     <Register/>
-       <Dashboard/>
+       <Dashboard/> */}
     
     </div>
  

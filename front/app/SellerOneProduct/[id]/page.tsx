@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import SellerNavbar from '../../SellerNavbar/page';
 import UpdateProduct from '../../UpdateProduct/page';
 import "./SellerOneProduct.css"
+import { log } from 'console';
 
 interface Product {
   id: number;
@@ -17,25 +18,27 @@ interface Product {
 
 
 
+
 const SellerOneProduct = () => {
   const [oneProduct, setOneProduct] = useState<Product>({});
   const [show, setShow] = useState<boolean>(false);
- 
 
   useEffect(() => {
+    var currentUrl = window.location.href;
       axios
-        .get<Product>(`http://localhost:3000/seller/getOne/`)
+        .get<Product>(`http://localhost:3000/seller/getOne/${currentUrl[currentUrl.length-1]}`)
         .then((res) => {
           setOneProduct(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
-  }, []);
+  }, [window.location.href]);
 
   const remove = (productId: string): void => {
+    var currentUrl = window.location.href;
     axios
-      .delete(`http://localhost:3000/seller/removeProduct/`)
+      .delete(`http://localhost:3000/seller/removeProduct/${currentUrl[currentUrl.length-1]}`)
       .then(() => {
        
       })
