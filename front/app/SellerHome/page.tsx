@@ -34,7 +34,7 @@ const SellerHome = () => {
     <div className='bg-jaunee '>
       <SellerNavbar />
 
-      <div className='flex space-x-6 flex justify-center  mt-14'>
+      <div className='flex space-x-6 justify-center  mt-14'>
   {Products.map((el, i) => (
     <div key={i} className="max-w-96 p-10 bg-white h-96 flex flex-col items-center">
     <div className="w-32 h-32 mb-4">

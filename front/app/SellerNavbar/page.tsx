@@ -37,7 +37,9 @@ const SellerNavbar = () => {
           <li>
             <div className="group">
               <Link href="/">
-              <button className="text-2xl font-bold border border-white hover:border-none border-double hover:bg-gradient-to-r from-jaunee to-jaune text-white px-10 py-2 rounded-3xl">Log Out</button>
+              <button 
+              onClick={()=>localStorage.clear()}
+              className="text-2xl font-bold border border-white hover:border-none border-double hover:bg-gradient-to-r from-jaunee to-jaune text-white px-10 py-2 rounded-3xl">Log Out</button>
 
               </Link>
             </div>

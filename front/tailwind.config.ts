@@ -20,7 +20,8 @@ const config: Config = {
       'gray-400':'#94a3b8',
       'gray-700':'#334155',
       'orange':'#e83e01',
-      'bg':'#faf5f2'
+      'bg':'#faf5f2',
+      'green-400':'#a3e635'
       
     },
     extend: {
