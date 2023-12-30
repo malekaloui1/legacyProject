@@ -4,6 +4,7 @@ import Navbar from '../../navbar/navbar';
 import Footer from '../../component/footer';
 import axios from 'axios';
 
+
 interface Product{
     id: number,
     name: string,
@@ -12,12 +13,13 @@ interface Product{
     description: string
 };
 
-const OneProduct = () => {
+const OneProduct: React.FC = () => {
 
     const [OneProduct, setOneProduct] = useState<Product>({id: 0, name: '', images: '', price: 0, description: ''});
+    
 
   useEffect(()=>{
-    var name=window.location.href
+        const name=window.location.href
         axios.get<Product>(`http://localhost:3000/client/searchProductByName/${name}`)
         .then((res)=>{    
             setOneProduct(res.data)
