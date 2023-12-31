@@ -1,7 +1,6 @@
 "use client"
 import React, { useState } from 'react'
 import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa6";
 
 const Sales = () => {
     const[index,setIndex]=useState(-1)
