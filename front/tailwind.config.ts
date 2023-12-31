@@ -24,8 +24,6 @@ const config: Config = {
       "jaunema":'#f59e0b',
       "bluemalik":"#172554",
       'green-400':'#a3e635'
-
-      
     },
     extend: {
       backgroundImage: {
