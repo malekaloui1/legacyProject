@@ -2,7 +2,7 @@ const {User,Product } = require("../database-mysql/index");
 const bcrypt = require('bcrypt');
  
 const getAll = (req, res) => {
- Product.findAll()
+ Product.findAll({where:{userId:req.params.id}})
  .then((result)=>{
     res.status(200).send(result)
  })
@@ -30,7 +30,8 @@ const add = (req, res) => {
    description:req.body.description,
    unit:req.body.unit,
    category:req.body.category,
-   images:req.body.images
+   images:req.body.images,
+   userId:req.body.userId
  })
  .then((result)=>{
    res.status(200).send("Product created")
