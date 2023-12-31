@@ -19,7 +19,7 @@ interface ProfileProps {}
 
 const defaultTheme = createTheme();
 
-const Profile: React.FC<ProfileProps> = () => {
+const Profile = () => {
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [email, setEmail] = useState<string>('');

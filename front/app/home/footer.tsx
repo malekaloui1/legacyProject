@@ -5,7 +5,7 @@ const Footer = () => {
     <div className='mt-40 h-85 w-full bg-black absolute top-[208%] '>
         <div className='grid grid-cols-5 text-white ml-20 mt-20 gap-12'>
             <div>
-        <h4 className='text-3xl mt-12 mb-10'>Exlusive</h4>
+        <h4 className='text-3xl mt-12 mb-10'>Tunisia Camping</h4>
         <h2 className='text-xl mt-12 mb-10'>Subscribe</h2>
         <h2>Get 10% off your first order</h2>
         </div>

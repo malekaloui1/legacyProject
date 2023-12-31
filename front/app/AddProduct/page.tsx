@@ -69,7 +69,7 @@ const CreateProduct= () => {
       <div >
         <SellerNavbar />
       </div>
-      <div className="create bg-white mb-20 ">
+      <div className="create bg-white mb-20 shadow-2xl">
         
         <h2>Create New Product</h2>
         <form>

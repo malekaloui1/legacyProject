@@ -11,14 +11,13 @@ const Register = () => {
     const[email,setEmail]=useState(null)
     const[pass,setPass]=useState(null)
     const[name,setName]=useState(null)
-    const[role,setRole]=useState("seller")
     const[logged,setLogged]=useState(false)
 
 const add=()=>{
-    axios.post(`http://localhost:3000/auth/register`,{firstName:name,email:email,password:pass,role:role})
+    axios.post(`http://localhost:3000/auth/register`,{firstName:name,email:email,password:pass,role:'admin'})
     .then(r=>{setLogged(true)
     setTimeout(() => {
-      router.push('/login')
+      router.push('/admin')
     }, 1500);
     }).catch(err=>console.log(err))
 }
@@ -32,7 +31,7 @@ const add=()=>{
               <Link href={'/home'}>Home</Link>
               <Link href={'/About'}>About</Link>
               <Link href={'/faq'}>FAQ</Link>
-              <Link href={'/login'}><h1 style={{
+              <Link href={'/admin'}><h1 style={{
     'color': 'white',
     'width': '240%',
     'marginTop': '-11%',
@@ -49,7 +48,7 @@ const add=()=>{
               <h1 className='mb-5'>Register to continue </h1>
 
               <div>
-              <Link href={'/login'}><button 
+              <Link href={'/admin'}><button 
               style={{'position': 'absolute',
                 'top': '31%',
                 'left': '43%'}}
@@ -68,13 +67,7 @@ const add=()=>{
         className='w-[30rem] h-14 border border-gray-400 p-4  text-sm mb-5	'
         />
         <br />
-        <h1 >Role:</h1><br />
-      <select onChange={(e)=>setRole(e.target.value) }
-      className='w-[10rem] h-7 cursor-pointer rounded-sm'
-      >
-         <option >seller</option>
-         <option>client</option>
-       </select>
+       
        <button onClick={()=>add()}
        style={{'backgroundImage': 'linear-gradient(90deg,#4681b9,#2c578c)'}}
        className='flex justify-center items-center w-[30rem] h-14 bg-blue mt-10 text-white'>register</button>
@@ -89,8 +82,8 @@ const add=()=>{
         <h3 className='text-white absolute m-32 text-xl mt-80 font-bold'>Join us and live the adventure!</h3>
         {/* <div className='bg-gray w-64 h-64 rounded-full absolute'></div> */}
         <img className='w-full h-full float-right' src="https://static.vecteezy.com/ti/vecteur-libre/p3/2441473-illustration-de-camping-de-nuit-gratuit-vectoriel.jpg" alt="" />
-       {logged&& <Alert severity="success" color="info" className='absolute top-[75%] left-[25%]'>
-  User Added Successefully !
+       {logged&& <Alert severity="success" color="info" className='absolute top-[90%] left-[20%]'>
+  Admin Added Successefully !
 </Alert>}
         </div>
         
