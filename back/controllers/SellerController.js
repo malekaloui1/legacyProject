@@ -66,39 +66,10 @@ const remove = (req, res) => {
   })
 };
 
-const checkpassword= (req,res)=>{
-  
-      const userInfo =User.findOne({
-        where: {
-          email: req.body.email,
-        }
-      });
+const checkpassword= async(req,res)=>{
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-      if (!userInfo) {
-        return res.status(404).json({
-          status: 'error',
-          message: 'User not found',
-        });
-      }
-      const isPasswordValid =  bcrypt.compare(req.body.currentPassword, userInfo.password);
-
-      if (!isPasswordValid) {
-
-  
-        
-        return res.status(401).json({
-          status: 'error',
-          message: 'Incorrect current password',
-        });
-      }
-      const hashedNewPassword = bcrypt.hash(req.body.newPassword, 10);
- User.update({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        adress: req.body.adress,
-        email: req.body.email,
-        password: hashedNewPassword,
- }, {where:{id:req.params.id}})
+  User.update({email:req.body.email,password:hashedPassword}, {where:{id:req.params.id}})
  .then((result)=>{
    res.status(200).send("profile updated")
   })
